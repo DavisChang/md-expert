@@ -1,0 +1,44 @@
+name: Claude Dev
+
+# 開發環節：在 Issue/PR 留言 @claude，或手動派工，由 Claude 自動實作並開 PR。
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+  issues:
+    types: [opened, assigned]
+  workflow_dispatch:
+    inputs:
+      task:
+        description: '要 Claude 執行的任務描述'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  id-token: write
+
+jobs:
+  claude:
+    # 只在留言含 @claude，或為手動派工/被指派時觸發，避免無謂執行。
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'issues') ||
+      contains(github.event.comment.body, '@claude')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Claude Code
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # 手動派工時用 inputs.task；事件觸發時 action 會自動帶入留言/Issue 內容。
+          prompt: ${{ github.event_name == 'workflow_dispatch' && inputs.task || '' }}
+          # 遵守 CLAUDE.md 的規範與 Definition of Done；產出含測試的 PR。
+          claude_args: '--max-turns 30'

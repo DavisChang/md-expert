@@ -1,0 +1,213 @@
+/*
+ * 閱讀視圖外框 (chrome) 樣式 — Apple 設計語言。
+ * 色票 token 來自共用的 tokens.css、內文樣式來自共用的 markdown.css（與側欄一致）；
+ * 本檔只負責閱讀視圖專屬的外框（工具列、分頁、目錄、提示泡泡）。
+ * 注入於 content script 的 Shadow DOM，與宿主頁雙向隔離。
+ */
+
+:host {
+  all: initial;
+  font-family: var(--md-font);
+}
+
+::selection {
+  background: var(--md-selection);
+}
+
+.mdx-root {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  display: flex;
+  flex-direction: column;
+  background: var(--md-bg);
+  color: var(--md-fg);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 工具列：毛玻璃，與側欄標題列一致 */
+.mdx-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  flex: 0 0 auto;
+  background: var(--md-bg);
+  background: color-mix(in srgb, var(--md-bg) 92%, transparent);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 0.5px solid var(--md-border);
+}
+
+.mdx-toolbar .mdx-title {
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1 1 auto;
+  color: var(--md-fg);
+}
+
+.mdx-btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  border: 0.5px solid var(--md-border);
+  background: transparent;
+  color: var(--md-fg-2);
+  border-radius: 980px;
+  padding: 5px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  line-height: 1.4;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease;
+}
+.mdx-btn:hover {
+  background: var(--md-sunken);
+  border-color: var(--md-border-strong);
+  color: var(--md-fg);
+}
+.mdx-btn:disabled {
+  cursor: default;
+}
+.mdx-like.liked {
+  border-color: var(--md-accent);
+  color: var(--md-accent);
+}
+
+/* 按鈕上的快捷鍵提示 */
+.mdx-kbd {
+  display: inline-block;
+  margin-left: 5px;
+  padding: 0 5px;
+  min-width: 14px;
+  font-size: 11px;
+  font-family: var(--md-mono);
+  line-height: 16px;
+  text-align: center;
+  color: var(--md-fg-3);
+  background: var(--md-code-bg);
+  border: 0.5px solid var(--md-border);
+  border-radius: 4px;
+}
+.mdx-btn:hover .mdx-kbd {
+  border-color: var(--md-accent);
+  color: var(--md-accent);
+}
+
+.mdx-body {
+  display: flex;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.mdx-toc {
+  flex: 0 0 250px;
+  overflow-y: auto;
+  padding: 20px 16px;
+  border-right: 0.5px solid var(--md-border);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.mdx-toc a {
+  display: block;
+  color: var(--md-fg-2);
+  text-decoration: none;
+  padding: 3px 8px;
+  border-radius: 6px;
+  letter-spacing: -0.01em;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+.mdx-toc a:hover {
+  color: var(--md-accent);
+  background: var(--md-sunken);
+}
+
+.mdx-content {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 36px 48px 96px;
+}
+
+/* 分頁列：膠囊式分段控制，與側欄文件切換器一致 */
+.mdx-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 8px 16px;
+  border-bottom: 0.5px solid var(--md-border);
+  overflow-x: auto;
+  flex: 0 0 auto;
+  scrollbar-width: none;
+}
+.mdx-tabs::-webkit-scrollbar {
+  display: none;
+}
+.mdx-tab {
+  appearance: none;
+  flex: 0 0 auto;
+  border: none;
+  background: transparent;
+  color: var(--md-fg-2);
+  border-radius: 980px;
+  padding: 5px 13px;
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+.mdx-tab:hover {
+  background: var(--md-sunken);
+  color: var(--md-fg);
+}
+.mdx-tab[aria-selected='true'] {
+  background: var(--md-accent);
+  color: #fff;
+}
+
+/* 內文容器版面（元素樣式來自共用 markdown.css 的 .markdown-body） */
+.mdx-article {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+/* 換頁時的輕量提示泡泡 */
+.mdx-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 2147483646;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border-radius: 980px;
+  background: var(--md-accent, #0071e3);
+  color: #fff;
+  border: none;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.18),
+    0 0 0 0.5px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  font-family: var(--md-font);
+  transition: transform 0.15s ease;
+}
+.mdx-fab:hover {
+  transform: scale(1.03);
+}

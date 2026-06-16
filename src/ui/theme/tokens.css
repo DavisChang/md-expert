@@ -1,0 +1,71 @@
+/*
+ * 設計 token（單一真相來源）。Apple 色票，閱讀視圖 (Shadow DOM, :host) 與
+ * 側欄／其他頁面 (:root) 共用同一份。主題一律以 [data-theme] 屬性切換，
+ * 由 theme.ts 的 applyTheme() 設定，兩種情境機制一致。
+ *
+ * :host 選擇器在一般文件中不生效、:root 選擇器在 Shadow DOM 中不生效，
+ * 因此同一檔案同時涵蓋兩種情境是安全的。
+ */
+
+:host,
+:root {
+  --md-bg: #ffffff;
+  --md-elevated: #f5f5f7;
+  --md-sunken: rgba(0, 0, 0, 0.04);
+
+  --md-fg: #1d1d1f;
+  --md-fg-2: #6e6e73;
+  --md-fg-3: #86868b;
+
+  --md-border: rgba(0, 0, 0, 0.08);
+  --md-border-strong: rgba(0, 0, 0, 0.13);
+
+  --md-link: #0071e3;
+  --md-link-hover: #0077ed;
+  --md-accent: #0071e3;
+  --md-accent-tint: rgba(0, 113, 227, 0.1);
+  --md-selection: rgba(0, 113, 227, 0.22);
+
+  --md-code-bg: #f5f5f7;
+
+  --md-font-scale: 1;
+  --md-font: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display',
+    'Helvetica Neue', 'Noto Sans TC', 'PingFang TC', sans-serif;
+  --md-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+:host([data-theme='dark']),
+:root[data-theme='dark'] {
+  --md-bg: #1c1c1e;
+  --md-elevated: #2c2c2e;
+  --md-sunken: rgba(255, 255, 255, 0.05);
+  --md-fg: #f5f5f7;
+  --md-fg-2: #aeaeb2;
+  --md-fg-3: #8e8e93;
+  --md-border: rgba(255, 255, 255, 0.1);
+  --md-border-strong: rgba(255, 255, 255, 0.16);
+  --md-link: #0a84ff;
+  --md-link-hover: #409cff;
+  --md-accent: #0a84ff;
+  --md-accent-tint: rgba(10, 132, 255, 0.16);
+  --md-selection: rgba(10, 132, 255, 0.32);
+  --md-code-bg: rgba(255, 255, 255, 0.06);
+}
+
+:host([data-theme='sepia']),
+:root[data-theme='sepia'] {
+  --md-bg: #f4ecd8;
+  --md-elevated: #ece0c4;
+  --md-sunken: rgba(0, 0, 0, 0.04);
+  --md-fg: #3a2f23;
+  --md-fg-2: #6b5d49;
+  --md-fg-3: #8a7a60;
+  --md-border: rgba(74, 63, 47, 0.18);
+  --md-border-strong: rgba(74, 63, 47, 0.28);
+  --md-link: #9a5b2f;
+  --md-link-hover: #b06a38;
+  --md-accent: #9a5b2f;
+  --md-accent-tint: rgba(154, 91, 47, 0.12);
+  --md-selection: rgba(154, 91, 47, 0.25);
+  --md-code-bg: #ece0c4;
+}

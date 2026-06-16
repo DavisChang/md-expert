@@ -1,0 +1,87 @@
+/*
+ * Side Panel 外框 (chrome) 樣式 — Apple 設計語言。
+ * 色票 token 來自共用的 tokens.css、內文樣式來自共用的 markdown.css（與閱讀視圖一致）；
+ * 本檔只負責側欄專屬的外框（文件切換器、內文容器版面）。
+ * 主題由 main.tsx 依使用者設定寫入 documentElement 的 [data-theme]。
+ */
+
+:root {
+  color-scheme: light dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--md-bg);
+  color: var(--md-fg);
+  font-family: var(--md-font);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--md-selection);
+}
+
+.sp-empty {
+  padding: 48px 24px;
+  color: var(--md-fg-3);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* 文件切換器：膠囊式分段控制，與閱讀視圖的分頁列一致 */
+.sp-list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 6px;
+  padding: 10px 14px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  /* 不透明底色防止捲動內容透出與標題重疊；再疊毛玻璃做 Apple 質感 */
+  background: var(--md-bg);
+  background: color-mix(in srgb, var(--md-bg) 92%, transparent);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 0.5px solid var(--md-border);
+}
+.sp-list::-webkit-scrollbar {
+  display: none;
+}
+.sp-item {
+  appearance: none;
+  flex: 0 0 auto;
+  border: none;
+  background: transparent;
+  color: var(--md-fg-2);
+  border-radius: 980px;
+  padding: 5px 13px;
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+  white-space: nowrap;
+}
+.sp-item:hover {
+  background: var(--md-sunken);
+  color: var(--md-fg);
+}
+.sp-item.active {
+  background: var(--md-accent);
+  color: #fff;
+}
+
+/* 內文容器版面（元素樣式來自共用 markdown.css 的 .markdown-body） */
+.sp-article {
+  padding: 22px 22px 80px;
+}

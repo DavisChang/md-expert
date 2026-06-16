@@ -1,0 +1,29 @@
+name: Weekly Ideation
+
+# 發想環節：每週掃描市場/競品/趨勢，產出帶優先級的功能建議 Issue，供人工 review。
+on:
+  schedule:
+    - cron: '0 1 * * 1' # 每週一 09:00 (UTC+8)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  id-token: write
+
+jobs:
+  ideate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run market-scan skill
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # 呼叫專案內的 /market-scan skill；它會用 WebSearch 蒐集現況、
+          # 對照 ROADMAP，最後用 gh 開一個「每週發想」Issue。
+          prompt: '/market-scan'
+          claude_args: '--max-turns 25 --allowedTools "WebSearch,WebFetch,Bash(gh:*),Read,Glob,Grep"'

@@ -1,0 +1,9 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Markdown Expert logo">
+  <rect width="128" height="128" rx="28" fill="#0071E3"/>
+  <g fill="#FFFFFF">
+    <!-- M -->
+    <path d="M26 44h12l13 16 13-16h12v40H74V62l-10 12h-1L53 62v22H26z"/>
+    <!-- down arrow -->
+    <path d="M95 44h11v20h9L100 86 85 64h9z"/>
+  </g>
+</svg>

@@ -1,0 +1,24 @@
+node_modules/
+dist/
+*.zip
+*.log
+.DS_Store
+.env
+.env.*
+coverage/
+playwright-report/
+test-results/
+.vite/
+
+# Editor / OS
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+Thumbs.db
+
+# Playwright 瀏覽器快取（若指向專案內）
+.cache/
+
+# 預覽產物
+sidepanel-preview.html
