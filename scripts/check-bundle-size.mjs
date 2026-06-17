@@ -10,8 +10,8 @@ import { dirname, join, resolve } from 'node:path';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const dist = resolve(__dirname, '../dist');
 
-// 上限（gzip bytes）。markdown-it + DOMPurify 管線約 60KB，預留成長空間。
-const MAX_TOTAL = 300 * 1024;
+// 上限（gzip bytes）。Mermaid/KaTeX 是按需載入，但仍會打進 extension package。
+const MAX_TOTAL = 1100 * 1024;
 const MAX_SINGLE = 250 * 1024;
 
 function walk(dir) {
