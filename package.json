@@ -1,7 +1,7 @@
 {
   "name": "markdown-expert",
   "version": "0.1.0",
-  "description": "在任何網頁中偵測 Markdown，渲染成好讀的格式。換頁自動偵測，多篇以分頁/側欄呈現。",
+  "description": "Detect Markdown on any web page and render it into a clean, focused reading view.",
   "license": "MIT",
   "private": true,
   "type": "module",
@@ -16,7 +16,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "store:screenshots": "node scripts/capture_store_screenshots.mjs"
   },
   "dependencies": {
     "@preact/signals": "^1.3.0",

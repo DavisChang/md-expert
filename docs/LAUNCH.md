@@ -1,80 +1,143 @@
-# 上線準備清單（Markdown Expert）
+# Chrome Web Store Launch Checklist
 
-把通用的 Chrome Web Store 上架清單對應到**本專案實際狀況**。
+This checklist maps Chrome Web Store submission requirements to the current Markdown Expert repository.
 
-> **重要定位**：Markdown Expert 是**唯讀的 Markdown 渲染工具**——沒有登入、沒有後端、沒有付款、沒有雲端同步、不錄製操作、不擷取表單/截圖。因此通用清單裡大量「錄製/回放、帳號、付款、後端」項目對我們**不適用**，審核複雜度低。唯一的資料外送是**使用者主動 opt-in 的匿名統計**。
+## Current Status
 
-## 適用性總覽
-
-| 通用清單區塊 | 對本專案 | 說明 |
+| Area | Status | Notes |
 | --- | --- | --- |
-| 1 開發者帳號 | 需要 | 註冊 CWS developer（一次性費用）、設定聯絡信箱 |
-| 2 技術包 | ✅ 大致就緒 | `pnpm build` 產 `dist/`，`pnpm zip` 打包；manifest 在 zip 根目錄 |
-| 3 權限與隱私 | 需收尾 | 權限已最小化；隱私政策已備（GitHub Pages） |
-| 4 Listing 素材 | 需製作 | 圖示（待換正式圖）、promo 圖、截圖、文案 |
-| 5 隱私政策 | ✅ 已備 | `site/privacy.html` → 部署後即 Privacy Policy URL |
-| 6 商業化/付款 | 不適用 | 免費、無付費牆 |
-| 7 後端基礎設施 | 不適用 | 無自有後端；分析走 GA4 |
-| 8 QA 測試 | 部分自動化 | 28+ 單元、5 E2E；仍需手動安裝/更新/移除測試 |
-| 9 審核提交資料 | 需填寫 | Test instructions 很簡單（見下） |
-| 10 發布策略 | 建議 | 先 Unlisted beta → 公開 |
+| Manifest V3 | Ready | `manifest.config.ts` builds MV3 output. |
+| Build artifact | Ready | `pnpm build` creates `dist/`; `pnpm zip` packages it. |
+| Privacy policy | Ready | https://davischang.github.io/md-expert/privacy.html |
+| Store listing copy | Ready | See `docs/STORE_LISTING.md`. |
+| Store icon | Ready | `store/icon-128.png`. |
+| Small promo tile | Draft ready | `store/promo-440x280.png`; can be improved visually later. |
+| Screenshots | Needed | Capture 1-5 screenshots at 1280x800. |
+| Developer account | Manual | Requires Chrome Web Store Developer Dashboard access. |
+| Submission | Manual | First submission should be Unlisted. |
 
-## Must-have 檢核
+## Technical Package
 
-- [x] Manifest V3
-- [x] `manifest.json` 在 zip 根目錄（CRXJS 產出 + `pnpm zip`）
-- [x] name / version / description（≤132 字元）/ icons 完整
-- [x] 權限最小化（`storage`、`sidePanel`、`tabs`、content `<all_urls>`；GA 主機為 optional）
-- [ ] **128×128 正式圖示**（目前為佔位／待換上提供的 logo）
-- [ ] **440×280 小型宣傳圖**
-- [ ] **至少 1 張截圖**（建議 3–5 張：閱讀視圖、多篇分頁、側欄、設定頁）
-- [x] Store listing 長描述（見 `STORE_LISTING.md`）
-- [ ] Privacy practices 表單（見下「審核問答」）
-- [ ] Privacy Policy URL（部署 `site/` 後填入 `…/privacy.html`）
-- [ ] Support email / Support URL
-- [x] 安裝、更新、移除流程（手動再跑一次確認）
+Run before upload:
 
-## 權限理由（填 Privacy practices 用）
+```bash
+pnpm lint
+pnpm typecheck
+pnpm test
+pnpm build
+pnpm e2e
+pnpm zip
+```
 
-| 權限 | 理由（一句話） |
+Expected upload file:
+
+```text
+markdown-expert-v0.1.0.zip
+```
+
+Verify:
+
+- `manifest.json` is at the zip root.
+- `manifest_version` is `3`.
+- `name`, `version`, `description`, and icons are present.
+- No `.env`, source maps with secrets, test reports, or repo metadata are included.
+
+## Dashboard Fields
+
+Use `docs/STORE_LISTING.md` for copy-paste content.
+
+| Dashboard area | Value |
 | --- | --- |
-| `storage` | 儲存使用者偏好（主題、字級、每網域規則） |
-| `tabs` | 偵測分頁載入/換頁以重新偵測並更新圖示徽章 |
-| `sidePanel` | 多篇 Markdown 時以側邊面板呈現 |
-| `host_permissions: <all_urls>`（content script） | 需在任何網頁就地偵測並渲染 Markdown；僅本機處理、不外連 |
-| optional `google-analytics.com` | 僅在使用者開啟匿名統計時動態請求 |
+| Category | Productivity |
+| Language | English default; Traditional Chinese localization if enabled |
+| Homepage URL | https://davischang.github.io/md-expert/ |
+| Support URL | https://github.com/DavisChang/md-expert/issues |
+| Privacy policy URL | https://davischang.github.io/md-expert/privacy.html |
+| Pricing | Free |
+| Visibility | Unlisted for first beta |
+| Mature content | No |
 
-- 單一用途聲明：**偵測並渲染網頁上的 Markdown**。
-- 資料使用揭露：預設不蒐集；opt-in 後僅送匿名互動事件（無內容/網址/個資）。
-- 遠端程式碼：**無**（分析用 Measurement Protocol，非 gtag.js）。
+## Permission Justifications
 
-> 權限精簡建議（可選）：`tabs` 可評估改用 `activeTab`，進一步降低審核風險——popup 取得當前分頁 URL、background 監聽 `onUpdated.status` 皆可不需 `tabs`。若改動需回歸測試 popup/側欄。
+| Permission | Justification |
+| --- | --- |
+| `storage` | Stores user preferences such as theme, font size, and per-domain behavior. |
+| `tabs` | Detects tab loading and navigation so Markdown can be re-detected and the extension badge can be updated. |
+| `sidePanel` | Displays multiple detected Markdown documents in Chrome's side panel. |
+| content script on `<all_urls>` | Runs locally on pages to detect and render Markdown wherever it appears. Page content is not transmitted. |
+| optional `https://www.google-analytics.com/*` | Requested only if the user explicitly enables anonymous usage analytics. |
 
-## 審核 Test Instructions（建議貼這段）
+Single purpose:
 
-```
-本擴充無需登入、無付費。
-
-測試步驟：
-1. 安裝擴充。
-2. 開啟任一原始 Markdown 頁面，例如：
-   https://raw.githubusercontent.com/CHANGE-ME/markdown-expert/main/README.md
-3. 右下角會出現「📖 偵測到 Markdown」提示，點擊即展開閱讀視圖。
-4. 可測試：T 切換目錄、D 切換主題、C 複製、Esc 關閉、👍 讚。
-5. （選用）開啟擴充設定頁，可切換「分享匿名使用統計」(預設關閉)。
-
-備註：所有處理皆於本機完成；除非於設定頁開啟匿名統計，否則不送出任何資料。
+```text
+Detect Markdown on web pages and render it into a clean, focused reading view.
 ```
 
-## 發布流程
-1. `pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm zip`
-2. 上傳 `markdown-expert-vX.Y.Z.zip`
-3. 填 Store Listing（`STORE_LISTING.md`）、Privacy practices、Test instructions
-4. 先以 **Unlisted** 發布給早期使用者；修正後再轉 Public
-5. 之後可走自動化 `release.yml`（受保護 environment 人工核可）
+Remote code:
 
-## 待你提供的值（填入後取代佔位字串）
-- GitHub repo：`CHANGE-ME/markdown-expert`（網站連結、raw README 測試網址）
-- Support email：`SUPPORT_EMAIL`
-- Chrome Web Store 連結：`CHROME_WEB_STORE_URL`（上架後取得）
-- 正式 logo（已提供，待我產生各尺寸）
+```text
+No remote code is executed.
+```
+
+## Privacy Practices
+
+Default behavior:
+
+- No page content collection.
+- No Markdown content collection.
+- No URL or page title collection.
+- No screenshots or form data collection.
+- No account system.
+- No payment.
+- No backend server.
+
+Optional analytics:
+
+- Disabled by default.
+- User must opt in from the options page.
+- Sends coarse interaction events only.
+- Does not include page content, Markdown content, URLs, titles, or personal information.
+
+## Review Test Instructions
+
+Paste this in the review instructions field:
+
+```text
+No login or payment is required.
+
+Test steps:
+1. Install the extension.
+2. Open a raw Markdown page, for example:
+   https://raw.githubusercontent.com/DavisChang/md-expert/main/README.md
+3. A Markdown Expert prompt appears on the page.
+4. Click the prompt to open the reader view.
+5. Verify reader controls:
+   - T toggles the table of contents.
+   - D toggles the theme.
+   - C copies the source Markdown.
+   - Esc closes the reader.
+6. Open the extension options page and confirm that anonymous analytics are disabled by default.
+
+Privacy note:
+All Markdown rendering is processed locally. The extension does not send page content, Markdown content, URLs, or personal information. Optional anonymous analytics are disabled by default.
+```
+
+## Manual QA Before Submit
+
+- [ ] Install from `dist/` in Chrome.
+- [ ] Open `https://raw.githubusercontent.com/DavisChang/md-expert/main/README.md`.
+- [ ] Confirm prompt appears.
+- [ ] Open reader and inspect headings, code block, table, and TOC.
+- [ ] Test `T`, `D`, `C`, and `Esc`.
+- [ ] Open an ordinary web page with embedded Markdown.
+- [ ] Confirm options page opens and analytics are disabled by default.
+- [ ] Confirm uninstall/reinstall does not require account setup.
+- [ ] Confirm local file rendering after manually enabling file URL access.
+
+## Release Strategy
+
+1. Submit `0.1.0` as **Unlisted**.
+2. Test with a small group.
+3. Address review feedback or early user issues.
+4. Switch to Public after confidence is high.
+5. Use `release.yml` for future package generation once `CWS_*` secrets are configured.

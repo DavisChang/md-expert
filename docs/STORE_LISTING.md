@@ -1,38 +1,186 @@
-# Chrome Web Store 上架素材（草稿）
+# Chrome Web Store Listing Kit
 
-供 `release-prep` 與人工送審時維護。實際送審前請逐項確認。
+Prepared for the first Chrome Web Store submission of **Markdown Expert**.
 
-## 基本資料
-- **名稱**：Markdown Expert
-- **類別**：生產力工具（Productivity）
-- **語言**：繁體中文（之後可加英文）
+Official references checked on 2026-06-17:
 
-## 簡短說明（132 字內）
-> 在任何網頁偵測 Markdown，立即渲染成好讀格式。換頁自動偵測，多篇以分頁／側欄呈現。隱私優先，全程本機處理。
+- Chrome Web Store listing fields: https://developer.chrome.com/docs/webstore/cws-dashboard-listing
+- Privacy fields: https://developer.chrome.com/docs/webstore/cws-dashboard-privacy
+- Program policies: https://developer.chrome.com/docs/webstore/program-policies
 
-## 詳細說明
+## Submission Metadata
+
+| Field | Value |
+| --- | --- |
+| Name | Markdown Expert |
+| Category | Productivity |
+| Default language | English |
+| Website / homepage URL | https://davischang.github.io/md-expert/ |
+| Privacy policy URL | https://davischang.github.io/md-expert/privacy.html |
+| Support URL | https://github.com/DavisChang/md-expert/issues |
+| Pricing | Free |
+| Visibility recommendation | Start with Unlisted beta, then switch to Public |
+| Mature content | No |
+
+## English Listing
+
+### Short Description
+
+```text
+Detect Markdown on any web page and render it into a clean, focused reading view.
 ```
-Markdown Expert 讓你在瀏覽器中閱讀 Markdown 更輕鬆：
 
-• 自動偵測 — 原始 .md 頁面、GitHub/GitLab raw 檔、網頁內嵌的 markdown 區塊，甚至本機檔案。
-• 好讀渲染 — 標題、表格、任務清單、程式碼高亮、目錄導覽，並與原頁樣式完全隔離。
-• 換頁自動偵測 — 支援單頁應用（SPA）與一般換頁。
-• 你來決定 — 每個網域可設定自動展開、顯示提示或略過。
-• 多篇呈現 — 一頁有多份 Markdown 時，以分頁或側邊面板切換閱讀。
-• 隱私優先 — 不蒐集任何資料，全部在你的瀏覽器本機完成。
+### Detailed Description
 
-開源專案，歡迎回饋與貢獻。
+```text
+Markdown Expert makes Markdown easier to read wherever it appears in Chrome.
+
+It detects Markdown on raw .md pages, GitHub/GitLab raw files, embedded page blocks, online editors, and local Markdown files, then renders it into a focused reader with clean typography and navigation.
+
+Key features:
+• Automatic Markdown detection across raw pages, embedded blocks, editors, and local files
+• Clean rendering for headings, tables, task lists, code blocks, syntax highlighting, and table of contents
+• Shadow DOM isolation so page styles and reader styles do not interfere with each other
+• Navigation-aware detection for full reloads, single-page apps, and delayed content
+• Per-domain behavior controls: auto-open, prompt, or skip
+• Multi-document support with tabs and side panel presentation
+• Privacy-first design: content is processed locally in your browser
+
+Privacy:
+Markdown Expert does not collect page content, Markdown content, URLs, page titles, screenshots, form data, or personal information. Optional anonymous analytics are off by default and only send coarse interaction events when explicitly enabled.
+
+Open source:
+https://github.com/DavisChang/md-expert
 ```
 
-## 視覺素材（待補）
-- [ ] 商店圖示 128×128（目前為佔位，需正式設計）
-- [ ] 截圖 1280×800 ×3~5（閱讀視圖、多篇分頁、設定頁）
-- [ ] 小型宣傳圖 440×280（選用）
+## Traditional Chinese Localization
 
-## 合規
-- [ ] **隱私權政策 URL**：部署 `site/` 後 → `https://CHANGE-ME.github.io/markdown-expert/privacy.html`
-- [ ] 權限用途說明：見 `docs/LAUNCH.md`「權限理由」表
-- [ ] 單一用途聲明：**偵測並渲染網頁上的 Markdown**
-- [ ] 資料使用：預設不蒐集；使用者 opt-in（預設關閉）後僅送匿名互動事件（無內容/網址/個資）
-- [ ] 遠端程式碼：**無**（分析採 GA4 Measurement Protocol，非 gtag.js）
-- [ ] 付費功能：**無**（免費、無付費牆、無 in-app purchase）
+### 簡短說明
+
+```text
+在任何網頁偵測 Markdown，渲染成乾淨、專注的閱讀介面。
+```
+
+### 詳細說明
+
+```text
+Markdown Expert 讓你在 Chrome 中更輕鬆閱讀 Markdown。
+
+它可以偵測 raw .md 頁面、GitHub/GitLab raw 檔、網頁內嵌區塊、線上編輯器與本機 Markdown 檔，並渲染成乾淨、專注的閱讀介面。
+
+主要功能：
+• 自動偵測 raw 頁面、內嵌區塊、編輯器與本機 Markdown
+• 支援標題、表格、任務清單、程式碼區塊、語法高亮與目錄
+• 使用 Shadow DOM 隔離樣式，避免與原頁 CSS 互相干擾
+• 支援整頁換頁、SPA 軟導覽與延遲載入內容
+• 可針對每個網域設定自動開啟、顯示提示或略過
+• 支援多篇 Markdown，以分頁或側邊面板呈現
+• 隱私優先：所有內容都在你的瀏覽器本機處理
+
+隱私：
+Markdown Expert 不蒐集頁面內容、Markdown 內容、網址、頁面標題、截圖、表單資料或個人資訊。匿名使用統計預設關閉，只有在你主動開啟時才會送出粗略互動事件。
+
+開源專案：
+https://github.com/DavisChang/md-expert
+```
+
+## Graphic Assets
+
+Chrome Web Store listing requirements currently call for:
+
+| Asset | Required | Current file | Status |
+| --- | --- | --- | --- |
+| Store icon, 128x128 PNG | Yes | `store/icon-128.png` | Ready |
+| Screenshots, 1280x800 PNG/JPEG, at least 1 and up to 5 | Yes | `store/screenshots/*.png` | Need capture |
+| Small promo tile, 440x280 PNG/JPEG | Yes | `store/promo-440x280.png` | Draft ready |
+| Marquee promo tile, 1400x560 PNG/JPEG | Optional | Not created | Optional |
+| YouTube promo video | Listed in docs | Not created | Skip for first submission unless dashboard blocks |
+
+Recommended screenshot set:
+
+1. Raw Markdown reader view.
+2. Embedded Markdown detection prompt.
+3. Reader with table of contents and code block.
+4. Options page with privacy/analytics toggle.
+5. Side panel or multi-document view, if captured cleanly.
+
+## Privacy Practices Answers
+
+### Single Purpose
+
+```text
+Detect Markdown on web pages and render it into a clean, focused reading view.
+```
+
+### Permission Justifications
+
+| Permission | Dashboard justification |
+| --- | --- |
+| `storage` | Stores user preferences such as theme, font size, and per-domain behavior. |
+| `tabs` | Detects tab loading and navigation so Markdown can be re-detected and the extension badge can be updated. |
+| `sidePanel` | Displays multiple detected Markdown documents in Chrome's side panel. |
+| Content script on `<all_urls>` | Runs locally on pages to detect and render Markdown wherever it appears. Page content is not transmitted. |
+| Optional host permission `https://www.google-analytics.com/*` | Requested only if the user explicitly enables anonymous usage analytics. |
+
+### Remote Code
+
+```text
+No, this extension does not execute remote code.
+```
+
+Notes:
+
+- The extension does not load remote scripts.
+- Optional analytics use Google Analytics Measurement Protocol requests only after user opt-in.
+
+### Data Collection Disclosure
+
+Recommended disclosure:
+
+```text
+By default, Markdown Expert does not collect user data. Page content, Markdown content, URLs, page titles, screenshots, form data, and personal information are not collected or transmitted.
+
+If the user explicitly enables anonymous usage analytics, the extension sends coarse interaction events such as feature usage and settings changes. These events do not include page content, Markdown content, URLs, or personal data.
+```
+
+Likely checkbox categories:
+
+- Default state: no user data collected.
+- If optional analytics is disclosed as collection: use "Website content" only if the dashboard treats any page-derived event as website data. Otherwise disclose as "User activity" / analytics events, depending on the dashboard categories shown at submission time.
+
+## Review Test Instructions
+
+```text
+No login or payment is required.
+
+Test steps:
+1. Install the extension.
+2. Open a raw Markdown page, for example:
+   https://raw.githubusercontent.com/DavisChang/md-expert/main/README.md
+3. A Markdown Expert prompt appears on the page.
+4. Click the prompt to open the reader view.
+5. Verify reader controls:
+   - T toggles the table of contents.
+   - D toggles the theme.
+   - C copies the source Markdown.
+   - Esc closes the reader.
+6. Open the extension options page and confirm that anonymous analytics are disabled by default.
+
+Privacy note:
+All Markdown rendering is processed locally. The extension does not send page content, Markdown content, URLs, or personal information. Optional anonymous analytics are disabled by default.
+```
+
+## Pre-Submission Checklist
+
+- [ ] Developer account registered and verified.
+- [ ] Support contact configured in the Chrome Web Store Developer Dashboard.
+- [ ] Privacy policy URL entered: `https://davischang.github.io/md-expert/privacy.html`.
+- [ ] `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm build`, and `pnpm e2e` pass.
+- [ ] `pnpm zip` creates `markdown-expert-v0.1.0.zip`.
+- [ ] Zip contains `manifest.json` at the root.
+- [ ] Store icon uploaded.
+- [ ] At least one screenshot uploaded.
+- [ ] Small promo tile uploaded.
+- [ ] Privacy practices completed.
+- [ ] Test instructions pasted.
+- [ ] First release submitted as Unlisted.

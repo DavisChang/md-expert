@@ -16,7 +16,10 @@ export default [
       globals: {
         Buffer: 'readonly',
         console: 'readonly',
+        fetch: 'readonly',
         process: 'readonly',
+        setTimeout: 'readonly',
+        URL: 'readonly',
       },
     },
   },
