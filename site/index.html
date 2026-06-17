@@ -1,17 +1,17 @@
 <!doctype html>
-<html lang="zh-Hant">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Markdown Expert — 在任何網頁優雅閱讀 Markdown</title>
+    <title>Markdown Expert - Read Markdown beautifully anywhere</title>
     <meta
       name="description"
-      content="在任何網頁偵測 Markdown，立即渲染成好讀的格式。換頁自動偵測，多篇以分頁／側欄呈現。隱私優先，全程本機處理。"
+      content="Detect Markdown on any web page and render it into a clean reading view. Local-first, privacy-focused, and built for raw files, embedded blocks, editors, and multi-document pages."
     />
     <meta property="og:title" content="Markdown Expert" />
     <meta
       property="og:description"
-      content="在任何網頁優雅閱讀 Markdown。隱私優先，全程本機處理。"
+      content="Read Markdown beautifully anywhere. Local-first and privacy-focused."
     />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="./assets/logo-full.png" />
@@ -26,11 +26,11 @@
           Markdown Expert
         </a>
         <nav>
-          <a href="#features">功能</a>
-          <a href="#privacy">隱私</a>
-          <a href="./privacy.html">隱私政策</a>
+          <a href="#features" data-en="Features" data-zh="功能">Features</a>
+          <a href="#privacy" data-en="Privacy" data-zh="隱私">Privacy</a>
+          <a href="./privacy.html" data-en="Privacy policy" data-zh="隱私政策">Privacy policy</a>
           <a href="https://github.com/DavisChang/md-expert">GitHub</a>
-          <a class="btn btn-primary" href="https://github.com/DavisChang/md-expert">查看原始碼</a>
+          <button class="lang-toggle" type="button" data-language-toggle aria-label="Switch language">中文</button>
         </nav>
       </div>
     </header>
@@ -39,52 +39,117 @@
       <section class="hero">
         <div class="wrap">
           <img class="logo-lg" src="./assets/logo-full.png" alt="Markdown Expert" />
-          <h1>在任何網頁優雅閱讀 Markdown</h1>
-          <p class="lead">
-            自動偵測網頁中的 Markdown，立即渲染成乾淨好讀的版面。換頁自動偵測，多篇以分頁或側欄呈現。
+          <h1 data-en="Read Markdown beautifully anywhere" data-zh="在任何網頁優雅閱讀 Markdown">
+            Read Markdown beautifully anywhere
+          </h1>
+          <p
+            class="lead"
+            data-en="Markdown Expert detects Markdown on web pages and turns it into a clean, comfortable reading view. It keeps working across navigation, delayed content, and pages with multiple documents."
+            data-zh="自動偵測網頁中的 Markdown，立即渲染成乾淨好讀的版面。換頁自動偵測，多篇以分頁或側欄呈現。"
+          >
+            Markdown Expert detects Markdown on web pages and turns it into a clean, comfortable reading view.
+            It keeps working across navigation, delayed content, and pages with multiple documents.
           </p>
           <div class="cta">
-            <a class="btn btn-primary" href="https://github.com/DavisChang/md-expert">在 GitHub 查看原始碼</a>
-            <a class="btn btn-ghost" href="./privacy.html">閱讀隱私政策</a>
+            <a
+              class="btn btn-primary"
+              href="https://github.com/DavisChang/md-expert"
+              data-en="View source on GitHub"
+              data-zh="在 GitHub 查看原始碼"
+            >
+              View source on GitHub
+            </a>
+            <a class="btn btn-ghost" href="./privacy.html" data-en="Read privacy policy" data-zh="閱讀隱私政策">
+              Read privacy policy
+            </a>
           </div>
-          <p class="note">開源 · 隱私優先 · 不蒐集任何資料（除非你主動開啟匿名統計）</p>
+          <p
+            class="note"
+            data-en="Open source · Privacy-first · No data collection unless you explicitly opt in to anonymous analytics"
+            data-zh="開源 · 隱私優先 · 不蒐集任何資料（除非你主動開啟匿名統計）"
+          >
+            Open source · Privacy-first · No data collection unless you explicitly opt in to anonymous analytics
+          </p>
         </div>
       </section>
 
       <section id="features">
         <div class="wrap">
-          <h2 class="section-title">為閱讀而生</h2>
-          <p class="section-sub">專注做好一件事：把網頁上的 Markdown 變得好讀。</p>
+          <h2 class="section-title" data-en="Built for focused reading" data-zh="為閱讀而生">
+            Built for focused reading
+          </h2>
+          <p
+            class="section-sub"
+            data-en="A lightweight browser extension focused on one job: making Markdown on the web easier to read."
+            data-zh="專注做好一件事：把網頁上的 Markdown 變得好讀。"
+          >
+            A lightweight browser extension focused on one job: making Markdown on the web easier to read.
+          </p>
           <div class="features">
             <div class="card">
-              <div class="emoji">🔍</div>
-              <h3>到處都能偵測</h3>
-              <p>原始 .md 頁面、GitHub／GitLab raw、網頁內嵌區塊、線上編輯器、本地檔案，自動辨識。</p>
+              <div class="emoji" aria-hidden="true">🔍</div>
+              <h3 data-en="Detects Markdown everywhere" data-zh="到處都能偵測">Detects Markdown everywhere</h3>
+              <p
+                data-en="Raw .md pages, GitHub and GitLab raw files, embedded blocks, online editors, and local files are recognized automatically."
+                data-zh="原始 .md 頁面、GitHub／GitLab raw、網頁內嵌區塊、線上編輯器、本地檔案，自動辨識。"
+              >
+                Raw .md pages, GitHub and GitLab raw files, embedded blocks, online editors, and local files are
+                recognized automatically.
+              </p>
             </div>
             <div class="card">
-              <div class="emoji">✨</div>
-              <h3>好讀的渲染</h3>
-              <p>標題、表格、任務清單、程式碼、目錄導覽，並與原頁樣式完全隔離（Shadow DOM）。</p>
+              <div class="emoji" aria-hidden="true">✨</div>
+              <h3 data-en="Clean rendering" data-zh="好讀的渲染">Clean rendering</h3>
+              <p
+                data-en="Headings, tables, task lists, code blocks, and table of contents navigation render inside an isolated Shadow DOM."
+                data-zh="標題、表格、任務清單、程式碼、目錄導覽，並與原頁樣式完全隔離（Shadow DOM）。"
+              >
+                Headings, tables, task lists, code blocks, and table of contents navigation render inside an isolated
+                Shadow DOM.
+              </p>
             </div>
             <div class="card">
-              <div class="emoji">🔄</div>
-              <h3>換頁自動偵測</h3>
-              <p>支援單頁應用（SPA）與一般換頁，內容晚載入也能自動補偵測。</p>
+              <div class="emoji" aria-hidden="true">🔄</div>
+              <h3 data-en="Navigation aware" data-zh="換頁自動偵測">Navigation aware</h3>
+              <p
+                data-en="Works across traditional page loads, single-page apps, and content that appears after the initial render."
+                data-zh="支援單頁應用（SPA）與一般換頁，內容晚載入也能自動補偵測。"
+              >
+                Works across traditional page loads, single-page apps, and content that appears after the initial
+                render.
+              </p>
             </div>
             <div class="card">
-              <div class="emoji">🗂️</div>
-              <h3>多篇分頁／側欄</h3>
-              <p>一頁有多份 Markdown 時，以分頁切換；數量多時改用舒適的側邊面板。</p>
+              <div class="emoji" aria-hidden="true">🗂️</div>
+              <h3 data-en="Multiple documents" data-zh="多篇分頁／側欄">Multiple documents</h3>
+              <p
+                data-en="When a page contains more than one Markdown document, switch between tabs or use the side panel for larger sets."
+                data-zh="一頁有多份 Markdown 時，以分頁切換；數量多時改用舒適的側邊面板。"
+              >
+                When a page contains more than one Markdown document, switch between tabs or use the side panel for
+                larger sets.
+              </p>
             </div>
             <div class="card">
-              <div class="emoji">⌨️</div>
-              <h3>鍵盤快捷鍵</h3>
-              <p>T 切換目錄、D 切換主題、C 複製原文、Esc 關閉。亮／暗／復古主題隨選。</p>
+              <div class="emoji" aria-hidden="true">⌨️</div>
+              <h3 data-en="Fast controls" data-zh="鍵盤快捷鍵">Fast controls</h3>
+              <p
+                data-en="Toggle the table of contents, switch themes, copy source Markdown, and close the reader with keyboard shortcuts."
+                data-zh="T 切換目錄、D 切換主題、C 複製原文、Esc 關閉。亮／暗／復古主題隨選。"
+              >
+                Toggle the table of contents, switch themes, copy source Markdown, and close the reader with keyboard
+                shortcuts.
+              </p>
             </div>
             <div class="card">
-              <div class="emoji">🔒</div>
-              <h3>隱私優先</h3>
-              <p>所有內容處理皆在本機完成，不蒐集網頁內容或網址。匿名統計預設關閉、可選開啟。</p>
+              <div class="emoji" aria-hidden="true">🔒</div>
+              <h3 data-en="Privacy-first" data-zh="隱私優先">Privacy-first</h3>
+              <p
+                data-en="Content is processed locally in your browser. Anonymous analytics are optional and off by default."
+                data-zh="所有內容處理皆在本機完成，不蒐集網頁內容或網址。匿名統計預設關閉、可選開啟。"
+              >
+                Content is processed locally in your browser. Anonymous analytics are optional and off by default.
+              </p>
             </div>
           </div>
         </div>
@@ -92,21 +157,54 @@
 
       <section id="privacy" class="privacy-band">
         <div class="wrap">
-          <div class="emoji">🔒</div>
+          <div class="emoji" aria-hidden="true">🔒</div>
           <div class="text">
-            <h2>你的內容，留在你的瀏覽器</h2>
-            <p>Markdown Expert 不會把你瀏覽的網頁內容、Markdown 內容或網址送到任何伺服器——所有渲染都在本機完成。</p>
-            <p>唯一例外是你可<strong>主動開啟</strong>的匿名使用統計（預設關閉），且只送匿名互動事件，不含任何內容或個資。</p>
-            <p><a href="./privacy.html">閱讀完整隱私政策 →</a></p>
+            <h2 data-en="Your content stays in your browser" data-zh="你的內容，留在你的瀏覽器">
+              Your content stays in your browser
+            </h2>
+            <p
+              data-en="Markdown Expert does not send page content, Markdown content, or URLs to any server. Rendering happens locally."
+              data-zh="Markdown Expert 不會把你瀏覽的網頁內容、Markdown 內容或網址送到任何伺服器，所有渲染都在本機完成。"
+            >
+              Markdown Expert does not send page content, Markdown content, or URLs to any server. Rendering happens
+              locally.
+            </p>
+            <p
+              data-en="The only optional exception is anonymous usage analytics, which are off by default and never include page content or personal data."
+              data-zh="唯一例外是你可主動開啟的匿名使用統計（預設關閉），且只送匿名互動事件，不含任何內容或個資。"
+            >
+              The only optional exception is anonymous usage analytics, which are off by default and never include page
+              content or personal data.
+            </p>
+            <p>
+              <a href="./privacy.html" data-en="Read the full privacy policy" data-zh="閱讀完整隱私政策">
+                Read the full privacy policy
+              </a>
+            </p>
           </div>
         </div>
       </section>
 
-      <section style="text-align: center">
+      <section class="final-cta">
         <div class="wrap">
-          <h2 class="section-title">準備好了嗎？</h2>
-          <p class="section-sub">免費安裝，立即讓網頁上的 Markdown 變好讀。</p>
-          <a class="btn btn-primary" href="https://github.com/DavisChang/md-expert">在 GitHub 查看原始碼</a>
+          <h2 class="section-title" data-en="Ready to inspect the code?" data-zh="準備查看原始碼了嗎？">
+            Ready to inspect the code?
+          </h2>
+          <p
+            class="section-sub"
+            data-en="The project is open source and available on GitHub."
+            data-zh="專案已開源，可在 GitHub 查看。"
+          >
+            The project is open source and available on GitHub.
+          </p>
+          <a
+            class="btn btn-primary"
+            href="https://github.com/DavisChang/md-expert"
+            data-en="View source on GitHub"
+            data-zh="在 GitHub 查看原始碼"
+          >
+            View source on GitHub
+          </a>
         </div>
       </section>
     </main>
@@ -115,11 +213,13 @@
       <div class="wrap">
         <div>© 2026 Markdown Expert · MIT License</div>
         <div class="links">
-          <a href="./privacy.html">隱私政策</a>
+          <a href="./privacy.html" data-en="Privacy policy" data-zh="隱私政策">Privacy policy</a>
           <a href="https://github.com/DavisChang/md-expert">GitHub</a>
-          <a href="https://github.com/DavisChang/md-expert/issues">聯絡支援</a>
+          <a href="https://github.com/DavisChang/md-expert/issues" data-en="Support" data-zh="聯絡支援">Support</a>
         </div>
       </div>
     </footer>
+
+    <script src="./language.js"></script>
   </body>
 </html>

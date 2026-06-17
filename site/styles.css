@@ -90,15 +90,29 @@ a:hover {
 .nav nav {
   margin-left: auto;
   display: flex;
-  gap: 22px;
+  gap: 18px;
   align-items: center;
   font-size: 14px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 .nav nav a {
   color: var(--fg-2);
 }
 .nav nav a:hover {
   color: var(--fg);
+}
+.lang-toggle {
+  color: var(--fg);
+  background: var(--bg-soft);
+  border: 0.5px solid var(--border);
+  border-radius: 999px;
+  padding: 7px 12px;
+  font: inherit;
+  cursor: pointer;
+}
+.lang-toggle:hover {
+  background: var(--border);
 }
 
 /* 按鈕 */
@@ -173,6 +187,9 @@ a:hover {
 /* 區塊 */
 section {
   padding: 64px 0;
+}
+.final-cta {
+  text-align: center;
 }
 .section-title {
   text-align: center;
@@ -297,4 +314,29 @@ footer .links {
   display: flex;
   gap: 18px;
   flex-wrap: wrap;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 760px) {
+  .nav .wrap {
+    height: auto;
+    min-height: 56px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    align-items: flex-start;
+  }
+  .nav nav {
+    gap: 10px 14px;
+    font-size: 13px;
+  }
+  .hero {
+    padding-top: 64px;
+  }
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
 }

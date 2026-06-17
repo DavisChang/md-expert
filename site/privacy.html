@@ -1,10 +1,13 @@
 <!doctype html>
-<html lang="zh-Hant">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>隱私政策 — Markdown Expert</title>
-    <meta name="description" content="Markdown Expert 隱私政策：預設不蒐集任何資料，內容處理全程本機完成。" />
+    <title>Privacy Policy - Markdown Expert</title>
+    <meta
+      name="description"
+      content="Markdown Expert privacy policy: content is processed locally by default, with optional anonymous analytics only when explicitly enabled."
+    />
     <link rel="icon" type="image/png" href="./assets/favicon-32.png" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
@@ -16,73 +19,148 @@
           Markdown Expert
         </a>
         <nav>
-          <a href="./index.html">首頁</a>
+          <a href="./index.html" data-en="Home" data-zh="首頁">Home</a>
           <a href="https://github.com/DavisChang/md-expert">GitHub</a>
+          <button class="lang-toggle" type="button" data-language-toggle aria-label="Switch language">中文</button>
         </nav>
       </div>
     </header>
 
     <main class="doc">
       <div class="wrap">
-        <h1>隱私政策</h1>
-        <p class="updated">最後更新：2026-06-15</p>
+        <article data-lang-panel="en">
+          <h1>Privacy Policy</h1>
+          <p class="updated">Last updated: June 15, 2026</p>
 
-        <p>
-          Markdown Expert（以下稱「本擴充」）以隱私優先為設計原則。本擴充的核心功能是
-          <strong>在本機偵測並渲染網頁上的 Markdown</strong>，所有內容處理都在你的瀏覽器內完成。
-        </p>
+          <p>
+            Markdown Expert is designed with privacy as a baseline. Its core feature is to detect and render Markdown
+            locally inside your browser.
+          </p>
 
-        <h2>我們蒐集什麼</h2>
-        <p>
-          預設情況下，本擴充<strong>不蒐集、不儲存、不傳輸</strong>任何個人或瀏覽資料。
-          唯一會離開你裝置的資料，是你<strong>主動開啟</strong>「匿名使用統計」後送出的匿名互動事件（預設關閉）。
-        </p>
-        <ul>
-          <li><strong>偏好設定</strong>（主題、字級、每網域展開規則）：儲存在 Chrome <code>storage.sync</code>，僅用於同步你自己的設定。</li>
-          <li><strong>匿名使用統計（選用、opt-in）</strong>：開啟後，透過 Google Analytics 4 送出少量匿名互動事件。</li>
-        </ul>
-        <p><strong>我們絕不蒐集</strong>：網頁內容、Markdown 內容、網址、頁面標題、表單資料、截圖，或任何可識別個人的資訊。</p>
+          <h2>What We Collect</h2>
+          <p>
+            By default, Markdown Expert does not collect, store, or transmit personal or browsing data. The only data
+            that may leave your device is optional anonymous usage analytics, and only after you explicitly enable it.
+          </p>
+          <ul>
+            <li><strong>Preferences</strong>: theme, font size, and per-domain display rules stored in Chrome storage.</li>
+            <li><strong>Anonymous analytics</strong>: optional interaction events sent through Google Analytics 4.</li>
+          </ul>
+          <p>
+            We never collect page content, Markdown content, URLs, page titles, form data, screenshots, or personally
+            identifiable information.
+          </p>
 
-        <h2>為什麼蒐集</h2>
-        <ul>
-          <li>偏好設定：提供並同步你的個人化體驗。</li>
-          <li>匿名統計（若你開啟）：了解哪些功能被使用、改善產品品質。事件範例：偵測到 Markdown（含來源類型與篇數）、開啟閱讀視圖／側欄、工具列操作、設定變更、安裝、按讚。</li>
-        </ul>
+          <h2>Why We Collect It</h2>
+          <ul>
+            <li>Preferences keep your reading experience consistent across browser sessions.</li>
+            <li>Optional anonymous analytics help us understand feature usage and improve product quality.</li>
+          </ul>
 
-        <h2>資料儲存與保留</h2>
-        <ul>
-          <li>偏好設定：儲存在你的瀏覽器／你的 Google 帳號同步空間，由你掌控。</li>
-          <li>匿名統計：由 Google Analytics 依其政策處理；識別碼為隨機產生、僅存於本機的匿名 <code>client_id</code>，不關聯任何帳號。</li>
-          <li>本擴充<strong>沒有自有伺服器</strong>、不做雲端同步、不保存任何使用者內容。</li>
-        </ul>
+          <h2>Storage and Retention</h2>
+          <ul>
+            <li>Preferences are stored in your browser or synced through your own Google account.</li>
+            <li>Anonymous analytics are handled by Google Analytics according to Google's policies.</li>
+            <li>Markdown Expert has no backend server and does not store user content.</li>
+          </ul>
 
-        <h2>第三方服務</h2>
-        <ul>
-          <li><strong>Google Analytics 4</strong>（僅在你 opt-in 時）：用於匿名使用統計。其資料處理適用 Google 的隱私政策。</li>
-          <li>不使用付款服務、錯誤追蹤或廣告 SDK。</li>
-        </ul>
+          <h2>Third-Party Services</h2>
+          <ul>
+            <li><strong>Google Analytics 4</strong>: used only when you opt in to anonymous analytics.</li>
+            <li>No payment service, error tracking SDK, or advertising SDK is used.</li>
+          </ul>
 
-        <h2>你的控制權</h2>
-        <ul>
-          <li>隨時在擴充設定頁<strong>開啟或關閉</strong>匿名統計；關閉後立即停止傳送，並可移除相關網路權限。</li>
-          <li>移除本擴充即清除其本機設定。</li>
-          <li>匿名統計為 opt-in，預設關閉。</li>
-        </ul>
+          <h2>Your Controls</h2>
+          <ul>
+            <li>You can turn anonymous analytics on or off at any time in the extension settings.</li>
+            <li>Removing the extension removes its local settings from your browser.</li>
+            <li>Anonymous analytics are opt-in and off by default.</li>
+          </ul>
 
-        <h2>權限說明</h2>
-        <ul>
-          <li><code>storage</code>：儲存你的偏好設定。</li>
-          <li><code>tabs</code>：偵測分頁載入／換頁以重新偵測 Markdown 並更新圖示徽章。</li>
-          <li><code>sidePanel</code>：多篇 Markdown 時以側邊面板呈現。</li>
-          <li>內容指令碼（<code>&lt;all_urls&gt;</code>）：在頁面中就地偵測與渲染 Markdown；僅本機執行，不外連。</li>
-          <li><code>https://www.google-analytics.com/*</code>（選用）：僅在你開啟匿名統計時才動態請求，用於送出匿名事件。</li>
-        </ul>
+          <h2>Permissions</h2>
+          <ul>
+            <li><code>storage</code>: stores your preferences.</li>
+            <li><code>tabs</code>: detects tab navigation and updates the extension badge.</li>
+            <li><code>sidePanel</code>: displays multiple Markdown documents in a browser side panel.</li>
+            <li>Content scripts run locally on pages to detect and render Markdown.</li>
+            <li><code>https://www.google-analytics.com/*</code>: used only when optional analytics are enabled.</li>
+          </ul>
 
-        <h2>安全</h2>
-        <p>任何離開裝置的資料（僅匿名統計）均透過 HTTPS 傳輸。渲染輸出一律經 DOMPurify 淨化以防止 XSS。</p>
+          <h2>Security</h2>
+          <p>Any optional analytics data is sent over HTTPS. Rendered HTML is sanitized with DOMPurify to reduce XSS risk.</p>
 
-        <h2>聯絡我們</h2>
-        <p>有任何問題，請於 <a href="https://github.com/DavisChang/md-expert/issues">GitHub Issues</a> 回報。</p>
+          <h2>Contact</h2>
+          <p>
+            For questions, please use
+            <a href="https://github.com/DavisChang/md-expert/issues">GitHub Issues</a>.
+          </p>
+        </article>
+
+        <article data-lang-panel="zh" hidden>
+          <h1>隱私政策</h1>
+          <p class="updated">最後更新：2026-06-15</p>
+
+          <p>
+            Markdown Expert 以隱私優先為設計原則。本擴充的核心功能是
+            <strong>在本機偵測並渲染網頁上的 Markdown</strong>，所有內容處理都在你的瀏覽器內完成。
+          </p>
+
+          <h2>我們蒐集什麼</h2>
+          <p>
+            預設情況下，本擴充<strong>不蒐集、不儲存、不傳輸</strong>任何個人或瀏覽資料。
+            唯一會離開你裝置的資料，是你<strong>主動開啟</strong>「匿名使用統計」後送出的匿名互動事件。
+          </p>
+          <ul>
+            <li><strong>偏好設定</strong>：主題、字級、每網域展開規則，儲存在 Chrome storage。</li>
+            <li><strong>匿名使用統計</strong>：選用，開啟後透過 Google Analytics 4 送出少量匿名互動事件。</li>
+          </ul>
+          <p>我們絕不蒐集網頁內容、Markdown 內容、網址、頁面標題、表單資料、截圖，或任何可識別個人的資訊。</p>
+
+          <h2>為什麼蒐集</h2>
+          <ul>
+            <li>偏好設定：提供並同步你的個人化體驗。</li>
+            <li>匿名統計：若你開啟，用於了解功能使用情況並改善產品品質。</li>
+          </ul>
+
+          <h2>資料儲存與保留</h2>
+          <ul>
+            <li>偏好設定：儲存在你的瀏覽器或你的 Google 帳號同步空間。</li>
+            <li>匿名統計：由 Google Analytics 依其政策處理。</li>
+            <li>本擴充沒有自有伺服器、不做雲端同步、不保存任何使用者內容。</li>
+          </ul>
+
+          <h2>第三方服務</h2>
+          <ul>
+            <li><strong>Google Analytics 4</strong>：僅在你 opt-in 時用於匿名使用統計。</li>
+            <li>不使用付款服務、錯誤追蹤或廣告 SDK。</li>
+          </ul>
+
+          <h2>你的控制權</h2>
+          <ul>
+            <li>隨時在擴充設定頁開啟或關閉匿名統計。</li>
+            <li>移除本擴充即清除其本機設定。</li>
+            <li>匿名統計為 opt-in，預設關閉。</li>
+          </ul>
+
+          <h2>權限說明</h2>
+          <ul>
+            <li><code>storage</code>：儲存你的偏好設定。</li>
+            <li><code>tabs</code>：偵測分頁載入或換頁並更新圖示徽章。</li>
+            <li><code>sidePanel</code>：多篇 Markdown 時以側邊面板呈現。</li>
+            <li>內容指令碼：在頁面中就地偵測與渲染 Markdown，僅本機執行。</li>
+            <li><code>https://www.google-analytics.com/*</code>：僅在你開啟匿名統計時使用。</li>
+          </ul>
+
+          <h2>安全</h2>
+          <p>任何離開裝置的資料（僅匿名統計）均透過 HTTPS 傳輸。渲染輸出一律經 DOMPurify 淨化以降低 XSS 風險。</p>
+
+          <h2>聯絡我們</h2>
+          <p>
+            有任何問題，請於
+            <a href="https://github.com/DavisChang/md-expert/issues">GitHub Issues</a>
+            回報。
+          </p>
+        </article>
       </div>
     </main>
 
@@ -90,10 +168,12 @@
       <div class="wrap">
         <div>© 2026 Markdown Expert · MIT License</div>
         <div class="links">
-          <a href="./index.html">首頁</a>
+          <a href="./index.html" data-en="Home" data-zh="首頁">Home</a>
           <a href="https://github.com/DavisChang/md-expert">GitHub</a>
         </div>
       </div>
     </footer>
+
+    <script src="./language.js"></script>
   </body>
 </html>
