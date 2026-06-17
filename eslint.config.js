@@ -21,6 +21,18 @@ export default [
     },
   },
   {
+    files: ['site/**/*.js'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'script',
+      globals: {
+        document: 'readonly',
+        URLSearchParams: 'readonly',
+        window: 'readonly',
+      },
+    },
+  },
+  {
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
       parser: tsparser,
