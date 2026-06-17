@@ -2,7 +2,7 @@ import MarkdownIt from 'markdown-it';
 import anchor from 'markdown-it-anchor';
 import taskLists from 'markdown-it-task-lists';
 import { sanitizeHtml } from './sanitize';
-import { highlightCode } from './highlight';
+import { escapeHtml, highlightCode } from './highlight';
 import { extractToc, type TocItem } from './toc';
 import { slugify } from './slug';
 
@@ -32,6 +32,15 @@ function getRenderer(): MarkdownIt {
     permalink: anchor.permalink.headerLink(),
   });
   md.use(taskLists, { enabled: true, label: true });
+  const defaultFence = md.renderer.rules.fence;
+  md.renderer.rules.fence = (tokens, idx, options, env, self) => {
+    const token = tokens[idx]!;
+    const lang = token.info.trim().split(/\s+/, 1)[0]?.toLowerCase();
+    if (lang === 'mermaid') {
+      return `<pre class="mdx-mermaid"><code>${escapeHtml(token.content)}</code></pre>`;
+    }
+    return defaultFence?.(tokens, idx, options, env, self) ?? self.renderToken(tokens, idx, options);
+  };
   return md;
 }
 

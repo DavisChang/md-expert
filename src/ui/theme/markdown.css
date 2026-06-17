@@ -135,6 +135,23 @@
   font-size: inherit;
 }
 
+.markdown-body .mdx-mermaid {
+  margin: 0 0 1em;
+  padding: 12px;
+  overflow-x: auto;
+  text-align: center;
+  background: var(--md-elevated);
+  border: 0.5px solid var(--md-border);
+  border-radius: 8px;
+}
+.markdown-body .mdx-mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+.markdown-body pre.mdx-mermaid-error {
+  white-space: pre-wrap;
+}
+
 /* 引言：Apple 風細左線 + 微底色 */
 .markdown-body blockquote {
   margin: 0 0 1em;

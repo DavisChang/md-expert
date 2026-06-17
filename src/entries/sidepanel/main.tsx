@@ -5,6 +5,7 @@ import { isRuntimeMessage, type GetDocsMessage, type GetDocsResponse } from '@/c
 import { loadSettings, onSettingsChanged } from '@/core/store/settings';
 import { track } from '@/core/analytics/track';
 import { AnalyticsEvent } from '@/core/analytics/config';
+import { renderMermaid } from '@/ui/mermaid';
 import { applyTheme } from '@/ui/theme/theme';
 import '@/ui/theme/tokens.css';
 import '@/ui/theme/markdown.css';
@@ -20,6 +21,7 @@ function SidePanel() {
   const [docs, setDocs] = useState<Doc[]>([]);
   const [activeId, setActiveId] = useState('');
   const viewedTracked = useRef(false);
+  const articleRef = useRef<HTMLElement | null>(null);
 
   // 側欄首次顯示文件時上報一次。
   useEffect(() => {
@@ -67,6 +69,10 @@ function SidePanel() {
   const active = docs.find((d) => d.id === activeId) ?? docs[0];
   const rendered = useMemo(() => (active ? renderMarkdown(active.content) : null), [active]);
 
+  useEffect(() => {
+    if (articleRef.current) void renderMermaid(articleRef.current);
+  }, [rendered?.html]);
+
   if (!active) {
     return <div class="sp-empty">這個頁面尚未偵測到 Markdown。</div>;
   }
@@ -85,6 +91,7 @@ function SidePanel() {
         ))}
       </nav>
       <article
+        ref={articleRef}
         class="sp-article markdown-body"
         // renderMarkdown 已淨化
         dangerouslySetInnerHTML={{ __html: rendered?.html ?? '' }}

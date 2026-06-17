@@ -1,6 +1,7 @@
-import { useMemo } from 'preact/hooks';
+import { useEffect, useMemo, useRef } from 'preact/hooks';
 import { renderMarkdown } from '@/core/render/pipeline';
 import { Toc } from './Toc';
+import { renderMermaid } from './mermaid';
 
 interface ReaderProps {
   content: string;
@@ -16,12 +17,18 @@ interface ReaderProps {
  */
 export function Reader({ content, showToc, onNavigate, contentRef }: ReaderProps) {
   const { html, toc } = useMemo(() => renderMarkdown(content), [content]);
+  const articleRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (articleRef.current) void renderMermaid(articleRef.current);
+  }, [html]);
 
   return (
     <div class="mdx-body">
       {showToc && <Toc items={toc} onNavigate={onNavigate} />}
       <div class="mdx-content" ref={contentRef}>
         <article
+          ref={articleRef}
           class="mdx-article markdown-body"
           dangerouslySetInnerHTML={{ __html: html }}
         />

@@ -35,6 +35,12 @@ describe('renderMarkdown', () => {
     expect(html).toContain('mdx-code');
   });
 
+  it('Mermaid 圍欄輸出待渲染區塊', () => {
+    const { html } = renderMarkdown('```mermaid\ngraph TD\n  A-->B\n```');
+    expect(html).toContain('class="mdx-mermaid"');
+    expect(html).toContain('A--&gt;B');
+  });
+
   it('產生目錄並與標題錨點一致', () => {
     const { html, toc } = renderMarkdown('# Hello World\n\n## 次標題');
     expect(toc).toHaveLength(2);
