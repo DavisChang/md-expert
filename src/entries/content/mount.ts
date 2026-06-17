@@ -1,6 +1,7 @@
 import { render } from 'preact';
 import { h } from 'preact';
 import type { ComponentChild } from 'preact';
+import katexCss from 'katex/dist/katex.min.css?inline';
 import tokensCss from '@/ui/theme/tokens.css?inline';
 import readerCss from '@/ui/theme/reader.css?inline';
 import markdownCss from '@/ui/theme/markdown.css?inline';
@@ -36,8 +37,8 @@ export function mountShadow(): MountHandle {
     shadow = host.attachShadow({ mode: 'open' });
 
     const style = document.createElement('style');
-    // tokens（色票）→ markdown（共用內文）→ reader（外框），與側欄載入順序一致。
-    style.textContent = `${tokensCss}\n${markdownCss}\n${readerCss}`;
+    // tokens（色票）→ KaTeX → markdown（共用內文）→ reader（外框）。
+    style.textContent = `${tokensCss}\n${katexCss}\n${markdownCss}\n${readerCss}`;
     shadow.appendChild(style);
 
     container = document.createElement('div');

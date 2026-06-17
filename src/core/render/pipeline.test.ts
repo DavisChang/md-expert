@@ -41,6 +41,13 @@ describe('renderMarkdown', () => {
     expect(html).toContain('A--&gt;B');
   });
 
+  it('LaTeX inline 與 block 輸出待渲染區塊', () => {
+    const { html } = renderMarkdown('Inline $x^2$.\n\n$$\nE=mc^2\n$$');
+    expect(html).toContain('class="mdx-math" data-display="false"');
+    expect(html).toContain('class="mdx-math mdx-math-block" data-display="true"');
+    expect(html).toContain('E=mc^2');
+  });
+
   it('產生目錄並與標題錨點一致', () => {
     const { html, toc } = renderMarkdown('# Hello World\n\n## 次標題');
     expect(toc).toHaveLength(2);

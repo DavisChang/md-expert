@@ -22,7 +22,7 @@ Markdown appears in many places that are not designed for reading:
 - issue templates and notes in online editors,
 - local `.md` files opened from disk.
 
-Markdown Expert turns those surfaces into a consistent reading experience with headings, tables, task lists, code blocks, syntax highlighting, and table-of-contents navigation.
+Markdown Expert turns those surfaces into a consistent reading experience with headings, tables, task lists, code blocks, Mermaid diagrams, LaTeX math, syntax highlighting, and table-of-contents navigation.
 
 ## Features
 
@@ -32,7 +32,16 @@ Markdown Expert turns those surfaces into a consistent reading experience with h
 - **Navigation aware**: re-detects content after full reloads, SPA navigation, and delayed DOM updates.
 - **Per-domain behavior**: choose auto-open, prompt, or skip for each domain.
 - **Multiple documents**: uses tabs for multiple Markdown documents and a side panel when the set grows.
+- **Rich Markdown rendering**: supports tables, task lists, fenced code, Mermaid diagrams, and LaTeX math.
 - **Privacy-first defaults**: no page content, Markdown content, URLs, titles, screenshots, or form data are collected.
+
+## Supported Markdown
+
+| Syntax | Example |
+| --- | --- |
+| Mermaid diagrams | ```` ```mermaid ```` fenced blocks |
+| Inline math | `$x^2 + y^2 = z^2$` |
+| Display math | `$$ E = mc^2 $$` |
 
 ## Supported Sources
 

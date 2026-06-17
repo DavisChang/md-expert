@@ -152,6 +152,12 @@
   white-space: pre-wrap;
 }
 
+.markdown-body .mdx-math-block {
+  margin: 0 0 1em;
+  overflow-x: auto;
+  text-align: center;
+}
+
 /* 引言：Apple 風細左線 + 微底色 */
 .markdown-body blockquote {
   margin: 0 0 1em;

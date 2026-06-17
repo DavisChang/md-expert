@@ -5,8 +5,10 @@ import { isRuntimeMessage, type GetDocsMessage, type GetDocsResponse } from '@/c
 import { loadSettings, onSettingsChanged } from '@/core/store/settings';
 import { track } from '@/core/analytics/track';
 import { AnalyticsEvent } from '@/core/analytics/config';
+import { renderMath } from '@/ui/math';
 import { renderMermaid } from '@/ui/mermaid';
 import { applyTheme } from '@/ui/theme/theme';
+import 'katex/dist/katex.min.css';
 import '@/ui/theme/tokens.css';
 import '@/ui/theme/markdown.css';
 import './sidepanel.css';
@@ -70,7 +72,10 @@ function SidePanel() {
   const rendered = useMemo(() => (active ? renderMarkdown(active.content) : null), [active]);
 
   useEffect(() => {
-    if (articleRef.current) void renderMermaid(articleRef.current);
+    if (articleRef.current) {
+      void renderMath(articleRef.current);
+      void renderMermaid(articleRef.current);
+    }
   }, [rendered?.html]);
 
   if (!active) {

@@ -26,7 +26,7 @@ const ALLOWED_ATTR = [
   'href', 'title', 'alt', 'src', 'class', 'id',
   'colspan', 'rowspan', 'align',
   'type', 'checked', 'disabled', // checkbox 用
-  'data-line', 'aria-hidden',
+  'data-line', 'data-display', 'aria-hidden',
 ];
 
 let configured = false;

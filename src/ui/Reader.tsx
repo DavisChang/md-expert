@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef } from 'preact/hooks';
 import { renderMarkdown } from '@/core/render/pipeline';
 import { Toc } from './Toc';
+import { renderMath } from './math';
 import { renderMermaid } from './mermaid';
 
 interface ReaderProps {
@@ -20,7 +21,10 @@ export function Reader({ content, showToc, onNavigate, contentRef }: ReaderProps
   const articleRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    if (articleRef.current) void renderMermaid(articleRef.current);
+    if (articleRef.current) {
+      void renderMath(articleRef.current);
+      void renderMermaid(articleRef.current);
+    }
   }, [html]);
 
   return (
