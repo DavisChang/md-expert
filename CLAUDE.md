@@ -41,8 +41,9 @@
 ## 自動化閉環中的角色
 - **發想**：每週 `/market-scan` 開 ideation Issue（只建議，不改碼）。
 - **規格**：`/feature-spec` 把同意的想法轉成可實作規格。
-- **開發**：在 Issue/PR `@claude` 觸發實作，遵守上面 DoD，開 PR 等人工 review。
-- **發版**：`/release-prep` 準備到「只差核可」；發布永遠經 `production` environment 人工核可。
+- **開發**：在 Issue/PR `@claude` 觸發實作，遵守上面 DoD，開 PR。
+- **合併**：PR 的 **CI（含 E2E）全綠後，`auto-merge` workflow 會自動 squash-merge 進 `main`**（見 `.github/workflows/auto-merge.yml`），不等人工 review；只自動合併「本倉庫、指向 `main`、非 draft」的 PR。品質 gate＝綠燈 CI。
+- **發版**：`/release-prep` 準備到「只差核可」；發布永遠經 `production` environment 人工核可（**不受 auto-merge 影響**）。
 
 ## 常用指令
 - 開發：`pnpm dev`（Chrome 載入 `dist/` 未封裝擴充）
