@@ -13,6 +13,7 @@
 - 自動化閉環：CLAUDE.md、market-scan/feature-spec/release-prep skills、claude-dev/weekly-ideation/release workflows。
 
 ## 🚧 待辦 / 候選（依序為粗略優先級）
+- [x] 內建 AI 翻譯（PR#1，閱讀視圖）：Chrome Translator + Language Detector API，on-device、零新增權限、可切換原文/譯文。規格見 [`docs/specs/translation-builtin-ai.md`](./docs/specs/translation-builtin-ai.md)。後續（PR#2）：side panel 對齊、更多語言、可視區優先、並排對照。
 - [ ] 上架素材：正式圖示（取代佔位）、商店截圖、隱私說明定稿。
 - [ ] 首次送審 Chrome Web Store。
 - [ ] 渲染增強（第二階段）：Mermaid 圖表、KaTeX 數學（lazy-load，避免膨脹 bundle）。

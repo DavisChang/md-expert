@@ -25,6 +25,7 @@ export const AnalyticsEvent = {
   SettingChanged: 'setting_changed',
   ContentLiked: 'content_liked',
   ExtensionInstalled: 'extension_installed',
+  TranslationUsed: 'translation_used',
 } as const;
 
 export type AnalyticsEventName = (typeof AnalyticsEvent)[keyof typeof AnalyticsEvent];

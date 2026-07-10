@@ -2,7 +2,7 @@ import { h } from 'preact';
 import type { MarkdownSource } from '@/core/types';
 import { contextFromDocument, detectAll } from '@/core/detect/registry';
 import { effectiveAutoExpand, type Settings } from '@/core/store/schema';
-import { loadSettings, onSettingsChanged } from '@/core/store/settings';
+import { loadSettings, onSettingsChanged, updateSettings } from '@/core/store/settings';
 import { isRuntimeMessage, type RuntimeMessage } from '@/core/messaging/types';
 import { track } from '@/core/analytics/track';
 import { AnalyticsEvent } from '@/core/analytics/config';
@@ -12,7 +12,7 @@ import { mountShadow } from './mount';
 import { watchNavigation } from './navigation';
 
 /** 建置標記：每次調整 content script 行為時遞增，方便確認載入的是哪一版。 */
-const BUILD_TAG = 'analytics-opt-in-7';
+const BUILD_TAG = 'builtin-translation-1';
 
 let settings: Settings | null = null;
 let mount: ReturnType<typeof mountShadow> | null = null;
@@ -50,6 +50,11 @@ function openReader() {
       docs: currentDocs,
       initialTheme: settings.theme,
       fontScale: settings.fontScale,
+      translateTarget: settings.translateTarget,
+      onTranslateTargetChange: (lang: string) => {
+        if (settings) settings.translateTarget = lang;
+        void updateSettings({ translateTarget: lang });
+      },
       onClose: closeReader,
     }),
   );

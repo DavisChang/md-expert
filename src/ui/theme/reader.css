@@ -83,6 +83,38 @@
   color: var(--md-accent);
 }
 
+/* 翻譯控制：語言選單 + 翻譯/切換按鈕 */
+.mdx-translate {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+}
+.mdx-lang {
+  appearance: none;
+  border: 0.5px solid var(--md-border);
+  background: transparent;
+  color: var(--md-fg-2);
+  border-radius: 980px;
+  padding: 5px 10px;
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  font-family: var(--md-font);
+  cursor: pointer;
+  transition:
+    border-color 0.18s ease,
+    color 0.18s ease;
+}
+.mdx-lang:hover {
+  border-color: var(--md-border-strong);
+  color: var(--md-fg);
+}
+.mdx-lang:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
 /* 按鈕上的快捷鍵提示 */
 .mdx-kbd {
   display: inline-block;
