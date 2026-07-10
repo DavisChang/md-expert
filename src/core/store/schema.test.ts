@@ -29,6 +29,17 @@ describe('migrateSettings', () => {
     expect(migrateSettings({}).analyticsEnabled).toBe(false);
     expect(migrateSettings({ analyticsEnabled: true }).analyticsEnabled).toBe(true);
   });
+
+  it('翻譯目標語言：缺漏/非字串補預設，保留有效字串', () => {
+    expect(migrateSettings({}).translateTarget).toBe(DEFAULT_SETTINGS.translateTarget);
+    expect(migrateSettings({ translateTarget: 123 }).translateTarget).toBe(
+      DEFAULT_SETTINGS.translateTarget,
+    );
+    expect(migrateSettings({ translateTarget: '' }).translateTarget).toBe(
+      DEFAULT_SETTINGS.translateTarget,
+    );
+    expect(migrateSettings({ translateTarget: 'ja' }).translateTarget).toBe('ja');
+  });
 });
 
 describe('effectiveAutoExpand', () => {

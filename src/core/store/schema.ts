@@ -1,4 +1,5 @@
 import type { AutoExpandMode, MultiDocLayout, Theme } from '@/core/types';
+import { DEFAULT_TARGET_LANGUAGE } from '@/core/translate/languages';
 
 /** 使用者設定的結構與預設值。 */
 export interface Settings {
@@ -20,6 +21,8 @@ export interface Settings {
   fontScale: number;
   /** 匿名使用分析（opt-in，預設關閉）。開啟後才會送出匿名互動事件。 */
   analyticsEnabled: boolean;
+  /** 上次選擇的翻譯目標語言（BCP 47）。翻譯在本機進行，此欄僅記住偏好。 */
+  translateTarget: string;
 }
 
 export const SETTINGS_VERSION = 1;
@@ -34,6 +37,7 @@ export const DEFAULT_SETTINGS: Settings = {
   confidenceThreshold: 0.5,
   fontScale: 1,
   analyticsEnabled: false,
+  translateTarget: DEFAULT_TARGET_LANGUAGE,
 };
 
 /**
@@ -68,6 +72,10 @@ export function migrateSettings(raw: unknown): Settings {
       typeof input.analyticsEnabled === 'boolean'
         ? input.analyticsEnabled
         : DEFAULT_SETTINGS.analyticsEnabled,
+    translateTarget:
+      typeof input.translateTarget === 'string' && input.translateTarget
+        ? input.translateTarget
+        : DEFAULT_SETTINGS.translateTarget,
   };
 }
 

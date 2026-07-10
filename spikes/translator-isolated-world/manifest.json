@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "MDX Translator Spike",
+  "version": "0.0.1",
+  "description": "驗證 content script isolated world 能否取用 Translator API（R1）",
+  "content_scripts": [
+    {
+      "matches": ["https://example.com/*"],
+      "js": ["iso.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://example.com/*"],
+      "js": ["main.js"],
+      "run_at": "document_idle",
+      "world": "MAIN"
+    }
+  ]
+}
