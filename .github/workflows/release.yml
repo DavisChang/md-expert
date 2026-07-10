@@ -15,9 +15,9 @@ jobs:
     name: Build & package
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
         with:
           node-version: 20
           cache: pnpm
@@ -25,7 +25,7 @@ jobs:
       - run: pnpm build
       - run: pnpm zip
       - name: Upload zip artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: extension-zip
           path: markdown-expert-v*.zip
@@ -38,7 +38,7 @@ jobs:
     # 受保護環境：在 repo Settings > Environments > production 設定 required reviewers。
     environment: production
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: extension-zip
       - name: Upload & submit
